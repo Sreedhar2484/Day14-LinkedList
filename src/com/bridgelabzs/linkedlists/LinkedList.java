@@ -64,9 +64,33 @@ public class LinkedList{
                     System.out.println(searchElement + " is Found");
                 else
                     System.out.println(searchElement + " is not found..");
+                }
             }
 
-        }
+        void insert( int position,Object data) {  
+            Node newNode = new Node(data); 
+            newNode.ref = null;
+            if(position < 1) {
+                System.out.print("\nposition should be >= 1.");
+            } else if (position == 1) {
+                newNode.ref = head;
+                head = newNode;
+            } else {
+                Node temp = new Node(data);
+                temp = head;
+                for(int i = 1; i < position-1; i++) {
+                    if(temp != null) {
+                        temp = temp.ref;
+                    }
+                }
+                if(temp != null) {
+                    newNode.ref = temp.ref;
+                    temp.ref = newNode;  
+                } else {
+                    System.out.print("\nThe previous node is null.");
+                }       
+            }
+        } 
 
 
     
@@ -79,6 +103,8 @@ public class LinkedList{
         LL1.append(70);
         LL1.display();
         LL1.search(30);
+        LL1.insert(3, 40);
+        LL1.display();
         
     }
 }
