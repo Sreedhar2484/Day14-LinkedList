@@ -28,24 +28,28 @@ public class LinkedList{
 
         }
     }
-    public void addFirst(Object data){
+    public void append(Object data){
         Node newNode = new Node(data);
-        if(head==null){
+        if (head == null) {
             head = newNode;
-        }else{
+        } else if (head.ref == null) {
+            head.ref = newNode;
+        } else {
             Node temp = head;
-            head = newNode;
-            head.ref = temp;
+            while (temp.ref != null) {
+                temp = temp.ref;
+            }
+            temp.ref = newNode;
         }
         }    
     
     public static void main(String args[]){
         LinkedList LL1 = new LinkedList();
-        LL1.addFirst(70);
+        LL1.append(56);
         LL1.display();
-        LL1.addFirst(30);
+        LL1.append(30);
         LL1.display();
-        LL1.addFirst(56);
+        LL1.append(70);
         LL1.display();
     }
 }
