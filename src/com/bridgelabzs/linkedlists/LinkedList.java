@@ -43,7 +43,7 @@ public class LinkedList{
         }
         }
 
-        public void deleteFirst() {
+        public void popLast() {
             if (head == null)
                 System.out.println("No elements to be delete...");
             else if (head.ref == null)
@@ -51,7 +51,10 @@ public class LinkedList{
             else {
 
                 Node temp = head.ref;
-                head = temp;
+                while (temp.ref.ref != null) {
+                    temp = temp.ref;
+                }
+                temp.ref = null;
 
             }
         }
@@ -66,7 +69,7 @@ public class LinkedList{
         LL1.display();
         LL1.append(70);
         LL1.display();
-        LL1.deleteFirst();
+        LL1.popLast();
         LL1.display();
     }
 }
