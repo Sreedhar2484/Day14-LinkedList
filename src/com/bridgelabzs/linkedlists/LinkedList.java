@@ -91,8 +91,32 @@ public class LinkedList{
                 }       
             }
         } 
+        
+        public void delete_Data(Object data) {
+            int index = 0;
+            Node left = head;
+            Node right = left.ref;
+            while (right.data != data) {
+                left = left.ref;
+                right = right.ref;
+                index++;
 
-
+            }
+            left.ref = right.ref;
+        }
+        
+        public void size(){
+            Node temp=head;
+            int count = 0;
+            while(temp!=null)
+            {
+                temp=temp.ref;
+                count++;
+            }  
+            System.out.println("Size of Linked List is : " + count);
+            //return count;
+        }
+            
     
     public static void main(String args[]){
         LinkedList LL1 = new LinkedList();
@@ -105,6 +129,11 @@ public class LinkedList{
         LL1.search(30);
         LL1.insert(3, 40);
         LL1.display();
+        LL1.search(40);
+        LL1.delete_Data(40);
+        LL1.size();
+        LL1.display();
+        
         
     }
 }
